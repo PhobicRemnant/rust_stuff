@@ -4,8 +4,8 @@ These programs are to practice and better understand Rust, with the use of the m
 
 ### List:
 
-1.- Hello world program. A classic.
+1.- Hello world program. A classic.}
 
-2.- Temperature converter, from Fahrenheit to Celcius and viceversa.
+2.- Guessing game, from the book, Chapter 2.
 
-Here I will fill the tutorials as I go.
+3.- Temperature converter, from Fahrenheit to Celcius and viceversa.
