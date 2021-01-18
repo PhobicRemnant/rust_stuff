@@ -41,10 +41,11 @@ fn main() {
             cel2fah();
         }
         else if sel.trim().eq("x"){
+            println!("Exiting program.");
             break;
         }
         else{
-            println!("Optn invalid");
+            println!("Option invalid");
         } 
 
     }
