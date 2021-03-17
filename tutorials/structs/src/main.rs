@@ -80,6 +80,26 @@ fn area_tuple(dimensions:(u32,u32)) -> u32{
     dimensions.0 * dimensions.1
 }
 
+// -----------------------------------------------------
+//  Section 5.3 - Method Syntax
+// -----------------------------------------------------
+
+#[derive(Debug)]
+struct Rectangle{
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle{
+    fn area(&self) ->u32{
+        self.width * self.height
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
+}
+
 fn main() {
 
     // Section 5.1 code
@@ -105,7 +125,7 @@ fn main() {
     
     println!("R:{} G:{} B:{}",color.0, color.1, color.2);
 
-    // Section 5.1 code
+    // Section 5.2 code
     println!("");
     println!("Section 5.2:");
     println!(""); 
@@ -113,4 +133,35 @@ fn main() {
     square_area_calc();
     
     square_area_tuples_calc();
+
+    let rect1 = Rectangle{
+        width: 30,
+        height: 50,
+    };
+
+    println!("rect1 is {:#?}", rect1);
+
+    // Section 5.3 code
+    println!("");
+    println!("Section 5.3:");
+    println!(""); 
+
+    let rect2 = Rectangle{
+        width: 10,
+        height: 30,
+    };
+
+    let rect3 = Rectangle{
+        width: 60,
+        height: 20,
+    };
+
+    println!("Rect1 area: {}", rect1.area());
+    println!("Rect3 area: {}", rect3.area());
+    println!("Rect2 area: {}", rect2.area());
+
+    println!("Rect1 holds Rect2: {}", rect1.can_hold(&rect2));
+    println!("Rect1 holds Rect3: {}", rect1.can_hold(&rect3));
+
+
 }
