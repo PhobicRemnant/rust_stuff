@@ -43,7 +43,7 @@ fn main() {
     let loopback =IpAddVer::V6(String::from("::1"));
 
 
-    let coin = Coin::Penny;
+    let coin = Coin::Quarter;
 
     let value = coin.value_in_cents();
 
@@ -52,5 +52,18 @@ fn main() {
     let five = Some(5);
     let six = plus_one(five);
     let none = plus_one(None);
+
+    // Count enums with if let
+
+    let mut count:u32 = 0;
+
+    if let Coin::Penny = coin {
+        println!("This coin is a Penny");
+        count +=1;
+    }else{
+        println!("This coin isn't a Penny");
+    }
+
+    println!("We have {} coins", count);
 
 }
