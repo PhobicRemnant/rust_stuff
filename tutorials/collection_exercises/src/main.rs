@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, str::ParseBoolError};
 
 /*  ---Exercise 1---
 Given a list of integers, use a vector and return the mean (the average value),
@@ -66,7 +66,7 @@ fn mode(v:&Vec<i32>)-> i32{
     let mut mode = 0;
     let mut count = 0;
     for (key,value) in vector_map{
-        if(value > count){
+        if value > count {
             mode = *key;
             count = value;
         }
@@ -83,6 +83,68 @@ end of the word and “ay” is added, so “first” becomes “irst-fay.” Wo
 Keep in mind the details about UTF-8 encoding!
 */
 
+fn exercise_2(){
+
+    // Words set
+    let words = vec![String::from("first"),
+                                String::from("second"),
+                                String::from("interesting"),
+                                String::from("apple"),
+                                String::from("ballsack") ];
+
+    // Show the original words                              
+    println!("Original words:");
+    for word in &words{
+        println!("  {}",word);
+    }
+    
+    let mut piglatinized_words: Vec<String> = Vec::new();
+
+   // Pig latinizator converts the words in plain english to pig-latin
+    for word in words{
+        piglatinized_words.push(pig_latinizator(word));
+    }
+
+    // Show the original words                              
+    println!("Piglatinized words:");
+    for word in piglatinized_words{
+        println!("  {}",word);
+    }
+    
+
+}
+
+fn pig_latinizator(s: String) -> String{
+
+    //Get first character
+    let mut new_s = String::from(s);
+    let first_char = new_s.remove(0);
+    // If the word starts with a vowel
+    if !is_vowel(first_char){
+        
+        new_s.push('-');
+        new_s.push(first_char);
+        new_s.push_str("ay");
+    }else{
+    // If if doesn't
+        new_s.push_str("-hay");
+    }
+
+    // Return a String type
+    new_s
+}
+
+fn is_vowel(c: char) -> bool {
+
+    match c {
+        'a' => true,
+        'e' => true,
+        'i' => true,
+        'o' => true,
+        'u' => true,
+        _ => false
+    }
+}
 
 /* --- Exercise 3---
 Using a hash map and vectors, create a text interface to allow a user to add employee 
@@ -92,7 +154,14 @@ in the company by department, sorted alphabetically
 */
 fn main() {
 
+    println!("-----------");
     println!("Exercise 1:");
     exercise_1();
+
+    println!("-----------");
+    println!("Exercise 2:");
+    exercise_2();
+    println!("-----------");
+
 
 }
